@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>英打遊戲版本二 (分開放)</title>
+  <title>英打遊戲版本二 (assets)</title>
   <style>
     body {
       margin: 0;
@@ -59,15 +59,15 @@
   <h1>英打遊戲版本二</h1>
   
   <div class="img-container">
-    <!-- 修改圖片相對路徑為 images/keyboard.png -->
-    <img src="images/keyboard.png" alt="鍵盤圖示" onerror="showError('images/keyboard.png 載入失敗，請確認檔案位置')">
+    <!-- 圖片相對路徑：assets/keyboard.png -->
+    <img src="assets/keyboard.png" alt="鍵盤圖示" onerror="showError('assets/keyboard.png 載入失敗，請確認檔案位置')">
   </div>
 
   <button id="start-btn">開始</button>
   <p id="error-msg" class="error-msg"></p>
 
-  <!-- 修改音效相對路徑為 audio/beep.wav -->
-  <audio id="beep-sound" src="audio/beep.wav" preload="auto"></audio>
+  <!-- 音效相對路徑：assets/beep.wav -->
+  <audio id="beep-sound" src="assets/beep.wav" preload="auto"></audio>
 
   <script>
     const startBtn = document.getElementById('start-btn');
