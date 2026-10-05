@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英打遊戲版本二 (分開放)</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f9fa;
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+    .img-container {
+      margin-bottom: 24px;
+      max-width: 100%;
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 300px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    button {
+      padding: 12px 28px;
+      font-size: 1.25rem;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .error-msg {
+      color: #dc3545;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>英打遊戲版本二</h1>
+  
+  <div class="img-container">
+    <!-- 修改圖片相對路徑為 images/keyboard.png -->
+    <img src="images/keyboard.png" alt="鍵盤圖示" onerror="showError('images/keyboard.png 載入失敗，請確認檔案位置')">
+  </div>
+
+  <button id="start-btn">開始</button>
+  <p id="error-msg" class="error-msg"></p>
+
+  <!-- 修改音效相對路徑為 audio/beep.wav -->
+  <audio id="beep-sound" src="audio/beep.wav" preload="auto"></audio>
+
+  <script>
+    const startBtn = document.getElementById('start-btn');
+    const beepSound = document.getElementById('beep-sound');
+    const errorMsg = document.getElementById('error-msg');
+
+    function showError(msg) {
+      errorMsg.textContent = msg;
+      errorMsg.style.display = 'block';
+    }
+
+    startBtn.addEventListener('click', () => {
+      beepSound.currentTime = 0;
+      beepSound.play().catch(err => {
+        console.error("播放音效失敗：", err);
+        showError('音效播放失敗，請確認音效路徑或點擊頁面後再試一次');
+      });
+    });
+  </script>
+</body>
+</html>
